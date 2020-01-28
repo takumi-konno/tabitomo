@@ -8,12 +8,16 @@
         <img class="rounded img-fluid" src="" alt="">
       </div>
     </div>
+    <div>
+      <%= link_to 'しおり作成', new_itinerary_path, class:'btn btn-primary btn-block' %>
+    </div>
   </aside>
   <div class="col-sm-8">
     <ul class="nav nav-tabs nav-justified mb-3">
-      <li class="nav-item"><a href="#" class="nav-link">自分のしおり</a></li>
+      <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">自分のしおり  <span class="badge badge-secondary"><%= @count_itineraries %></span></a></li>
       <li class="nav-item"><a href="#" class="nav-link">ブックマーク</a></li>
       <li class="nav-item"><%= link_to 'プロフィールを編集', edit_user_path, class: 'nav-link' %></li>
     </ul>
+    <%= render 'itineraries/itineraries', itineraries: @itineraries %>
   </div>
 </div>

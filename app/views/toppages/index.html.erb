@@ -1,5 +1,16 @@
 <% if logged_in? %>
-  <p>ログインした後のトップページをここに表示</p>
+  <div class="row">
+    <aside class="col-sm-4">
+      <p>みんなのしおり</p>
+      <p>自分のしおり</p>
+      <p>ブックマーク</p>
+      <p>しおりを作る</p>
+      <p>ログアウト</p>
+    </aside>
+    <div class="col-sm-8">
+      <%= render 'itineraries/itineraries', itineraries: @itineraries %>
+    </div>
+  </div>
 <% else %>
   <div class="center jumbotron">
     <div class="text-center">
@@ -7,4 +18,13 @@
           <%= link_to 'ユーザ登録', signup_path, class: 'btn btn-lg btn-primary' %>
     </div>
   </div>
+  <div class="row">
+     <aside class="col-sm-4">
+     <p>みんなのしおり</p>
+     <p>ユーザ登録</p>
+     <p>ログイン</p>
+     </aside>
+   <div class="col-sm-8">
+     <%= render 'itineraries/itineraries', itineraries: @itineraries %>
+   </div>
 <% end %>

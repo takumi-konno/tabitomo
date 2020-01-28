@@ -1,0 +1,34 @@
+<div class="text-center">
+  <h1>しおりの更新</h1>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+
+    <%= form_with(model: @itinerary, local: true) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+      
+      <div class="form-group">
+        <%= f.label :image, 'イメージ画像' %>
+        <%= f.text_field :image, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :title, 'タイトル' %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :start_date, '開始日' %>
+        <%= f.text_field :start_date, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :end_date, '終了日' %>
+        <%= f.text_field :end_date, class: 'form-control' %>
+      </div>
+
+      <%= f.submit '保存する', class: 'btn btn-primary btn-block' %>
+    <% end %>
+  </div>
+</div>
