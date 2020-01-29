@@ -6,4 +6,20 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   has_many :itineraries
+  has_many :schedules, through: :itineraries
+  has_many :bookmarks
+  has_many :likes, through: :bookmarks, source: :itinerary
+  
+  def like(itinerary)
+    self.bookmarks.find_or_create_by(itinerary_id: itinerary.id)
+  end
+  
+  def unlike(itinerary)
+    bookmark = self.bookmarks.find_by(itinerary_id: itinerary.id)
+    bookmark.destroy if bookmark
+  end
+  
+  def likes?(itinerary)
+    self.likes.include?(itinerary)
+  end
 end

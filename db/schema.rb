@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_27_094458) do
+ActiveRecord::Schema.define(version: 2020_01_29_091309) do
+
+  create_table "bookmarks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "itinerary_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["itinerary_id"], name: "index_bookmarks_on_itinerary_id"
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
 
   create_table "itineraries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -44,6 +53,8 @@ ActiveRecord::Schema.define(version: 2020_01_27_094458) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "bookmarks", "itineraries"
+  add_foreign_key "bookmarks", "users"
   add_foreign_key "itineraries", "users"
   add_foreign_key "schedules", "itineraries"
 end
