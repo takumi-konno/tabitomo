@@ -36,7 +36,7 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       flash.now[:danger] = 'プロフィールの更新に失敗しました。'
-      render :new
+      render :edit
     end
   end
 

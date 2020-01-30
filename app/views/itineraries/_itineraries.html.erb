@@ -1,9 +1,11 @@
 <ul class="list-unstyled">
   <% itineraries.each do |itinerary| %>
-    <li class="media mb-3">
-      <div class="media-body">
-        <div>
+    <li>
+      <div class="card">
+        <div class="card-header">
           <p><%= link_to itinerary.title, itinerary %></p>
+        </div>
+        <div class="card-body">
           <p><%= itinerary.image %></p>
           <p><%= itinerary.start_date %></p>
           <p><%= itinerary.end_date %></p>

@@ -6,7 +6,6 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   has_many :itineraries
-  has_many :schedules, through: :itineraries
   has_many :bookmarks
   has_many :likes, through: :bookmarks, source: :itinerary
   

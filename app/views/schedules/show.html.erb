@@ -1,0 +1,25 @@
+<div class="text-center">
+  <h1>スケジュール詳細</h1>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+    <ul class="list-unstyled">
+      <li>
+        <div class="card">
+          <div class="card-header">
+            <%= @schedule.title %>
+          </div>
+          <div class="card-body">
+            <p><%= @schedule.date %></p>
+            <p><%= @schedule.start_time %></p>
+            <p><%= @schedule.end_time %></p>
+            <p><%= @schedule.supplement %></p>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <%= link_to '編集する', edit_schedule_path, class:'btn btn-primary btn-sm' %>
+    <%= link_to '削除する', @schedule, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class:'btn btn-primary btn-sm' %>
+  </div>
+</div>

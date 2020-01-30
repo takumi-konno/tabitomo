@@ -1,0 +1,17 @@
+<ul class="list-unstyled">
+  <% schedules.each do |schedule| %>
+    <li>
+      <div class="card">
+        <div class="card-header">
+          <%= link_to schedule.title, schedule %>
+        </div>
+        <div class="card-body">
+          <p><%= schedule.date %></p>
+          <p><%= schedule.start_time %></p>
+          <p><%= schedule.end_time %></p>
+          <p><%= schedule.supplement %></p>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>

@@ -1,11 +1,11 @@
 <% if logged_in? %>
   <div class="row">
     <aside class="col-sm-4">
-      <p>みんなのしおり</p>
-      <p>自分のしおり</p>
-      <p>ブックマーク</p>
-      <p>しおりを作る</p>
-      <p>ログアウト</p>
+      <p><%= link_to 'みんなのしおり', root_path %></p>
+      <p><%= link_to '自分のしおり', user_path(current_user) %></p>
+      <p><%= link_to 'ブックマーク', likes_user_path(current_user) %></p>
+      <p><%= link_to 'しおり作成', new_itinerary_path %></p>
+      <p><%= link_to 'ログアウト', logout_path, method: :delete %></p>
     </aside>
     <div class="col-sm-8">
       <%= render 'itineraries/itineraries', itineraries: @itineraries %>
@@ -15,14 +15,14 @@
   <div class="center jumbotron">
     <div class="text-center">
       <h1>Welcome to the Travel_Itinerary</h1>
-          <%= link_to 'ユーザ登録', signup_path, class: 'btn btn-lg btn-primary' %>
+      <%= link_to 'ユーザ登録', signup_path, class: 'btn btn-lg btn-primary' %>
     </div>
   </div>
   <div class="row">
      <aside class="col-sm-4">
-     <p>みんなのしおり</p>
-     <p>ユーザ登録</p>
-     <p>ログイン</p>
+     <p><%= link_to 'みんなのしおり', root_path %></p>
+     <p><%= link_to 'ユーザ登録', signup_path %></p>
+     <p><%= link_to 'ログイン', login_path %></p>
      </aside>
    <div class="col-sm-8">
      <%= render 'itineraries/itineraries', itineraries: @itineraries %>

@@ -18,7 +18,9 @@
   </aside>
   <div class="col-sm-8">
     <%= @itinerary.start_date %>～<%= @itinerary.end_date %>
-    <p>ここにscheduleを入れる。</p>
+    
+    <% #Schedulesのrender %>
+    <%= render 'schedules/schedules', schedules: @itinerary.schedules %>
     <%= link_to 'スケジュールを追加', new_schedule_path(itinerary_id: @itinerary.id), class:'btn btn-primary btn-block' %>
   </div>
 </div>

@@ -5,6 +5,10 @@ class ItinerariesController < ApplicationController
     @itinerary = Itinerary.find(params[:id])
   end
 
+  def new
+    @itinerary = current_user.itineraries.build
+  end
+
   def create
     @itinerary = current_user.itineraries.build(itinerary_params)
     if @itinerary.save
@@ -16,24 +20,13 @@ class ItinerariesController < ApplicationController
     end
   end
 
-  def new
-    @itinerary = current_user.itineraries.build
-  end
-
   def edit
     @itinerary = Itinerary.find(params[:id])
   end
 
-  def destroy
-    @itinerary.destroy
-    flash[:success] = 'しおりを削除しました。'
-    redirect_to root_url
-  end
-
   def update
-    @itinerary = current_user.itineraries.build(itinerary_params)
-    
-    if @itinerary.save
+    @itinerary = Itinerary.find(params[:id])
+    if @itinerary.update(itinerary_params)
       flash[:success] = 'しおりを更新しました。'
       redirect_to @itinerary
     else
@@ -41,6 +34,14 @@ class ItinerariesController < ApplicationController
       render 'itineraries/edit'
     end
   end
+  
+  def destroy
+    @user = @itinerary.user
+    @itinerary.destroy
+    flash[:success] = 'しおりを削除しました。'
+    redirect_to @user
+  end
+
   
   private
 
