@@ -16,6 +16,8 @@ Rails.application.routes.draw do
       get :added_bookmarks
     end
   end
+  get 'search', to: 'itineraries#search'
+  
   resources :schedules, except: [:index]
   
   resources :bookmarks, only: [:create, :destroy]

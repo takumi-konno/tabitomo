@@ -1,0 +1,16 @@
+<div class="row">
+  <aside class="col-sm-4">
+    <% #検索ボックス拡張 %>
+    <ul class="list-unstyled">
+      <li>
+        <%= form_tag(search_path, :method => 'get') do %>
+          <%= text_field_tag :search %>
+          <%= submit_tag 'しおりを検索', :name => nil %>
+        <% end %>
+      </li>
+    </ul>
+  </aside>
+  <div class="col-sm-8">
+    <%= render 'itineraries/itineraries', itineraries: @itineraries %>
+  </div>
+</div>

@@ -41,6 +41,10 @@ class ItinerariesController < ApplicationController
     flash[:success] = 'しおりを削除しました。'
     redirect_to @user
   end
+  
+  def search
+    @itineraries = Itinerary.search(params[:search])
+  end
 
   
   private
