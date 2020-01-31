@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :require_user_logged_in, only: [:edit, :destroy]
+  before_action :correct_user, only: [:edit, :destroy]
+  
   def index
   end
 
@@ -25,7 +28,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
@@ -41,7 +43,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
     @user.destroy
     
     flash[:success] = 'ユーザは正常に削除されました'
@@ -59,4 +60,12 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
+  
+  def correct_user
+    @user = User.find(params[:id])
+    if current_user.id != @user.id
+      redirect_to root_url
+    end
+  end
+  
 end

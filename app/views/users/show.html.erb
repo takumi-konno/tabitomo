@@ -1,23 +1,77 @@
-<div class="row">
-  <aside class="col-sm-4">
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title"><%= @user.name %></h3>
-      </div>
-      <div class="card-body">
-        <img class="rounded img-fluid" src="" alt="">
+<% if logged_in? %>
+  <% if current_user.id == @user.id %>
+  
+  <% #自分のユーザページ %>
+  
+    <div class="row">
+      <aside class="col-sm-4">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title"><%= @user.name %></h3>
+          </div>
+          <div class="card-body">
+            <img class="rounded img-fluid" src="" alt="">
+          </div>
+        </div>
+        <div>
+          <%= link_to 'しおり作成', new_itinerary_path, class:'btn btn-primary btn-block' %>
+        </div>
+      </aside>
+      <div class="col-sm-8">
+        <ul class="nav nav-tabs nav-justified mb-3">
+          <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">自分のしおり  <span class="badge badge-secondary"><%= @count_itineraries %></span></a></li>
+          <li class="nav-item"><a href="<%= likes_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>">ブックマーク  <span class="badge badge-secondary"><%= @count_likes %></span></a></li>
+          <li class="nav-item"><%= link_to 'プロフィールを編集', edit_user_path, class: 'nav-link' %></li>
+        </ul>
+        <%= render 'itineraries/itineraries', itineraries: @itineraries %>
       </div>
     </div>
-    <div>
-      <%= link_to 'しおり作成', new_itinerary_path, class:'btn btn-primary btn-block' %>
+    
+  <% else %>
+  
+  <% #他人のユーザページ %>
+
+    <div class="row">
+      <aside class="col-sm-4">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title"><%= @user.name %></h3>
+          </div>
+          <div class="card-body">
+            <img class="rounded img-fluid" src="" alt="">
+          </div>
+        </div>
+      </aside>
+      <div class="col-sm-8">
+        <ul class="nav nav-tabs nav-justified mb-3">
+          <li class="nav-item">作成したしおり  <span class="badge badge-secondary"><%= @count_itineraries %></span></li>
+        </ul>
+        <%= render 'itineraries/itineraries', itineraries: @itineraries %>
+      </div>
     </div>
-  </aside>
-  <div class="col-sm-8">
-    <ul class="nav nav-tabs nav-justified mb-3">
-      <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">自分のしおり  <span class="badge badge-secondary"><%= @count_itineraries %></span></a></li>
-      <li class="nav-item"><a href="<%= likes_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>">ブックマーク  <span class="badge badge-secondary"><%= @count_likes %></span></a></li>
-      <li class="nav-item"><%= link_to 'プロフィールを編集', edit_user_path, class: 'nav-link' %></li>
-    </ul>
-    <%= render 'itineraries/itineraries', itineraries: @itineraries %>
+  
+  <% end %>
+<% else %>
+
+<% #ログインしていない場合 %>
+
+  <div class="row">
+    <aside class="col-sm-4">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title"><%= @user.name %></h3>
+        </div>
+        <div class="card-body">
+          <img class="rounded img-fluid" src="" alt="">
+        </div>
+      </div>
+    </aside>
+    <div class="col-sm-8">
+      <ul class="nav nav-tabs nav-justified mb-3">
+        <li class="nav-item">作成したしおり  <span class="badge badge-secondary"><%= @count_itineraries %></span></li>
+      </ul>
+      <%= render 'itineraries/itineraries', itineraries: @itineraries %>
+    </div>
   </div>
-</div>
+
+<% end %>

@@ -1,4 +1,6 @@
 class SchedulesController < ApplicationController
+  before_action :require_user_logged_in, only: [:edit, :destroy]
+  before_action :correct_user_schedule, only: [:edit, :destroy]
   
   def show
     @schedule = Schedule.find(params[:id])
@@ -22,7 +24,6 @@ class SchedulesController < ApplicationController
   end
 
   def edit
-    @schedule = Schedule.find(params[:id])
   end
 
   def update
@@ -49,6 +50,13 @@ class SchedulesController < ApplicationController
 
   def schedule_params
     params.require(:schedule).permit(:itinerary_id, :date, :title, :start_time, :end_time, :supplement)
+  end
+  
+  def correct_user_schedule
+    @schedule = current_user.schedules.find_by(id: params[:id])
+    unless @schedule
+      redirect_to root_url
+    end
   end
   
 end

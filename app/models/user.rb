@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :itineraries
   has_many :bookmarks
   has_many :likes, through: :bookmarks, source: :itinerary
+  has_many :schedules, through: :itineraries
   
   def like(itinerary)
     self.bookmarks.find_or_create_by(itinerary_id: itinerary.id)

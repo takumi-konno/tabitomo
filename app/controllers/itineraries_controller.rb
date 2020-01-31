@@ -1,5 +1,6 @@
 class ItinerariesController < ApplicationController
-  before_action :correct_user, only: [:destroy]
+  before_action :require_user_logged_in, only: [:edit, :destroy]
+  before_action :correct_user_itinerary, only: [:edit, :destroy]
   
   def show
     @itinerary = Itinerary.find(params[:id])
@@ -21,7 +22,6 @@ class ItinerariesController < ApplicationController
   end
 
   def edit
-    @itinerary = Itinerary.find(params[:id])
   end
 
   def update
@@ -49,7 +49,7 @@ class ItinerariesController < ApplicationController
     params.require(:itinerary).permit(:title, :image, :start_date, :end_date)
   end
   
-  def correct_user
+  def correct_user_itinerary
     @itinerary = current_user.itineraries.find_by(id: params[:id])
     unless @itinerary
       redirect_to root_url
