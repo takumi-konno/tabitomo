@@ -10,7 +10,11 @@
             <h5 class="card-title"><%= @itinerary.title %></h5>
           </div>
           <div class="card-body">
-            <img class="rounded img-fluid" src="" alt="">
+            <% if @itinerary.image? %>
+              <%= image_tag @itinerary.image.thumb300.url %>
+            <% else %>
+              <%= image_tag "" %>
+            <% end %>
             <p><%= link_to @itinerary.user.name, user_path(id: @itinerary.user_id) %></p>
             <%= @itinerary.start_date %>～<%= @itinerary.end_date %>
           </div>

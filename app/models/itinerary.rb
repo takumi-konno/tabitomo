@@ -16,4 +16,6 @@ class Itinerary < ApplicationRecord
     end
   end
   
+  mount_uploader :image, ImageUploader
+  
 end

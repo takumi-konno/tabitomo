@@ -22,4 +22,7 @@ class User < ApplicationRecord
   def likes?(itinerary)
     self.likes.include?(itinerary)
   end
+  
+  mount_uploader :icon, IconUploader
+  
 end
