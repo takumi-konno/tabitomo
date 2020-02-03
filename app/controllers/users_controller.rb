@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @itineraries = @user.itineraries.order(id: :desc).page(params[:page])
+    @itineraries = @user.itineraries.order(id: :desc).page(params[:page]).per(9)
     counts(@user)
   end
 
@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:success] = 'ユーザを登録しました。'
+      session[:user_id] = @user.id
       redirect_to @user
     else
       flash.now[:danger] = 'ユーザの登録に失敗しました。'
@@ -51,7 +52,7 @@ class UsersController < ApplicationController
   
   def likes
     @user = User.find(params[:id])
-    @likes = @user.likes.page(params[:page])
+    @likes = @user.likes.page(params[:page]).per(9)
     counts(@user)
   end
   

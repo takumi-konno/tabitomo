@@ -43,7 +43,7 @@ class ItinerariesController < ApplicationController
   end
   
   def search
-    @itineraries = Itinerary.search(params[:search])
+    @itineraries = Itinerary.search(params[:search]).page(params[:page]).per(9)
   end
 
   
