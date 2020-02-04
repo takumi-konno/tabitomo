@@ -1,0 +1,14 @@
+<div class="card">
+  <div class="card-header">
+    <% if itinerary.image? %>
+      <%= image_tag itinerary.image.thumb250.url, class: 'card-img-top' %>
+    <% else %>
+      <%= image_tag "/images/no_image250.png", class: 'card-img-top' %>
+    <% end %>
+  </div>
+  <div class="card-body pb-0">
+    <p class="card-title"><%= itinerary.title %></p>
+    <p class="card-date"><%= itinerary.start_date %>~<%= itinerary.end_date %></p>
+    <p class="card-user"><%= link_to itinerary.user.name, user_path(id: itinerary.user_id) %></p>
+  </div>
+</div>

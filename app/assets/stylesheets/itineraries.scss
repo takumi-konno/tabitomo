@@ -1,0 +1,43 @@
+.card-body a {
+    color: #222;
+}
+.card-title {
+  font-size: 18px;
+  padding-bottom: 4px;
+}
+
+.card-title a {
+    color: #13334c;
+}
+
+.card-date {
+  font-size: 14px;
+  margin: 0;
+}
+
+.card-date a {
+  color: #C0C0C0;
+}
+
+.card-user {
+  font-size: 14px;
+}
+
+.btn-primary {
+    margin-top: 14px;
+    border-style: none;
+    background-color: #348498;
+    color: #f6f6e9;
+}
+.btn-primary:hover {
+     background-color: #004d61;
+}
+
+.btn-success {
+    border-style: none;
+    background-color: #fe5f55;
+    color: #f6f6e9;
+}
+.btn-success:hover {
+     background-color: #ff502f;
+}

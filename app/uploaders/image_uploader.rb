@@ -57,8 +57,8 @@ include CarrierWave::RMagick
     process :resize_to_limit => [300, 300]
   end
   
-  version :thumb30 do
-    process :resize_to_limit => [30, 30]
+  version :thumb250 do
+    process :resize_to_limit => [250, 250]
   end
   
   def extension_whitelist

@@ -1,0 +1,51 @@
+<% if logged_in? %>
+  <% if current_user.id == @user.id %>
+    <aside class="col-sm-2">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title user-name"><%= user.name %></h3>
+          </div>
+          <div class="card-body user-icon">
+            <% if user.icon? %>
+              <%= image_tag user.icon.thumb100.url %>
+            <% else %>
+              <%= image_tag "" %>
+            <% end %>
+          </div>
+        </div>
+        <div>
+          <%= link_to 'しおり作成', new_itinerary_path, class:'btn btn-primary btn-block mt-3' %>
+        </div>
+      </aside>
+  <% else %>
+    <aside class="col-sm-2">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title user-name"><%= user.name %></h3>
+          </div>
+          <div class="card-body user-icon">
+            <% if user.icon? %>
+              <%= image_tag user.icon.thumb100.url %>
+            <% else %>
+              <%= image_tag "" %>
+            <% end %>
+          </div>
+        </div>
+      </aside>
+  <% end %>
+<% else %>
+  <aside class="col-sm-2">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title user-name"><%= user.name %></h3>
+      </div>
+      <div class="card-body user-icon">
+        <% if user.icon? %>
+          <%= image_tag user.icon.thumb100.url %>
+        <% else %>
+          <%= image_tag "" %>
+        <% end %>
+      </div>
+    </div>
+  </aside>
+<% end %>

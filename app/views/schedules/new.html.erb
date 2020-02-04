@@ -10,27 +10,27 @@
       
       <div class="form-group">
         <%= f.label :date, '日付' %>
-        <%= f.text_field :date, class: 'form-control' %>
+        <%= f.text_field :date, class: 'form-control', :placeholder => "2000-1-1" %>
       </div>
 
       <div class="form-group">
         <%= f.label :start_time, '開始時間' %>
-        <%= f.text_field :start_time, class: 'form-control' %>
+        <%= f.text_field :start_time, class: 'form-control', :placeholder => "00:00" %>
       </div>
 
       <div class="form-group">
         <%= f.label :end_time, '終了時間' %>
-        <%= f.text_field :end_time, class: 'form-control' %>
+        <%= f.text_field :end_time, class: 'form-control', :placeholder => "24:00" %>
       </div>
       
       <div class="form-group">
         <%= f.label :title, 'タイトル' %>
-        <%= f.text_field :title, class: 'form-control' %>
+        <%= f.text_field :title, class: 'form-control', :placeholder => "タイトル" %>
       </div>
       
       <div class="form-group">
         <%= f.label :supplement, '補足' %>
-        <%= f.text_field :supplement, class: 'form-control' %>
+        <%= f.text_field :supplement, class: 'form-control', :placeholder => "補足"  %>
       </div>
 
       <%= hidden_field_tag :itinerary_id, @schedule.itinerary_id %>

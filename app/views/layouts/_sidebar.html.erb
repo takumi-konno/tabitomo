@@ -1,0 +1,21 @@
+<% if logged_in? %>
+  <aside class="col-sm-2">
+    <div class="nav nav-pills nav-stacked text-center">
+      <p class="nav-link active"><%= link_to 'みんなのしおり', root_path %></p>
+      <p class="nav-link"><%= link_to 'しおりを検索', search_path %></p>
+      <p class="nav-link"><%= link_to '自分のしおり', user_path(current_user) %></p>
+      <p class="nav-link"><%= link_to 'ブックマーク', likes_user_path(current_user) %></p>
+      <p class="nav-link"><%= link_to 'しおり作成', new_itinerary_path %></p>
+      <p class="nav-link"><%= link_to 'ログアウト', logout_path, method: :delete %></p>
+    </div>
+  </aside>
+<% else %>
+  <aside class="col-sm-2">
+    <div class="nav nav-pills nav-stacked text-center sidebar">
+      <p class="nav-link active active-nav"><%= link_to 'みんなのしおり', root_path %></p>
+      <p class="nav-link"><%= link_to 'しおりを検索', search_path %></p>
+      <p class="nav-link"><%= link_to 'ユーザ登録', signup_path %></p>
+      <p class="nav-link"><%= link_to 'ログイン', login_path %></p>
+    </div>
+  </aside>
+<% end %>

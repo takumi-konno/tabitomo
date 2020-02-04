@@ -1,27 +1,31 @@
 <div class="row">
-  <aside class="col-sm-4">
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title"><%= @user.name %></h3>
-      </div>
-      <div class="card-body">
-        <% if @user.icon? %>
-          <%= image_tag @user.icon.thumb300.url %>
-        <% else %>
-          <%= image_tag "" %>
-        <% end %>
-      </div>
-    </div>
-    <div>
-      <%= link_to 'しおり作成', new_itinerary_path, class:'btn btn-primary btn-block' %>
-    </div>
-  </aside>
-  <div class="col-sm-8">
+  <%= render 'users/user_icon', user: @user %>
+  <div class="col-sm-10">
     <ul class="nav nav-tabs nav-justified mb-3">
       <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">自分のしおり  <span class="badge badge-secondary"><%= @count_itineraries %></span></a></li>
       <li class="nav-item"><a href="<%= likes_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>">ブックマーク  <span class="badge badge-secondary"><%= @count_likes %></span></a></li>
       <li class="nav-item"><%= link_to 'プロフィールを編集', edit_user_path, class: 'nav-link' %></li>
     </ul>
-    <%= render 'itineraries/itineraries', itineraries: @likes %>
+    <div class="row">
+      <% @likes.each do |itinerary| %>
+        <div class="col-lg-4 col-md-6 mb-3 pr-1">
+          <div class="card" style="width: 18rem;">
+            <div class="card-header">
+              <% if itinerary.image? %>
+                <%= link_to image_tag(itinerary.image.thumb250.url), itinerary, class: 'card-img-top' %>
+              <% else %>
+                <%= link_to image_tag("/images/no_image250.png"), itinerary, class: 'card-img-top' %>
+              <% end %>
+            </div>
+            <div class="card-body pb-0">
+              <p class="card-title"><%= link_to itinerary.title, itinerary %></p>
+              <p class="card-date"><%= itinerary.start_date %>~<%= itinerary.end_date %></p>
+              <p class="card-user"><%= link_to itinerary.user.name, user_path(id: itinerary.user_id) %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <%= paginate @likes %>
+    </div>    
   </div>
 </div>

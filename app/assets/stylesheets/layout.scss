@@ -1,0 +1,26 @@
+.nav a {
+    color: #222;
+}
+.nav-pills .nav-link.active {
+    background-color: #348498;
+}
+
+.nav-pills .nav-link.active a {
+    color: #f6f6e9;
+}
+.nav-item a {
+    color: #222;
+}
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+    color: #f6f6e9;
+    background-color: #004d61;
+    border-color: #004d61;
+}
+*:focus {
+ box-shadow:none !important;
+}
+.btn-success:not(:disabled):not(.disabled).active, .btn-success:not(:disabled):not(.disabled):active, .show>.btn-success.dropdown-toggle {
+    color: #f6f6e9;
+    background-color: #ff502f;
+    border-color: #ff502f;
+}

@@ -1,30 +1,50 @@
 <% if logged_in? %>
+<header class="mb-4">
+  <nav class="navbar navbar-expand-sm navbar-dark" style="background-color:#004d61;">
+    <a class="navbar-brand" href="/">旅とも</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item"><%= link_to 'しおり作成', new_itinerary_path, class: 'nav-link' %></li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
+          <ul class="dropdown-menu dropdown-menu-right">
+            <li class="dropdown-item"><%= link_to 'マイプロフィール', user_path(current_user) %></li>
+            <li class="dropdown-divider"></li>
+            <li class="dropdown-item"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+<div class="container">
   <div class="row">
-    <aside class="col-sm-4">
-      <p><%= link_to 'みんなのしおり', root_path %></p>
-      <p><%= link_to '自分のしおり', user_path(current_user) %></p>
-      <p><%= link_to 'ブックマーク', likes_user_path(current_user) %></p>
-      <p><%= link_to 'しおり作成', new_itinerary_path %></p>
-      <p><%= link_to 'ログアウト', logout_path, method: :delete %></p>
-    </aside>
-    <div class="col-sm-8">
+    <%= render 'layouts/sidebar' %>
+    <div class="col-sm-10">
       <%= render 'itineraries/itineraries', itineraries: @itineraries %>
     </div>
   </div>
+</div>
+  
 <% else %>
-  <div class="center jumbotron">
-    <div class="text-center">
-      <h1>Welcome to the Travel_Itinerary</h1>
-      <%= link_to 'ユーザ登録', signup_path, class: 'btn btn-lg btn-primary' %>
+  
+  <div class="jumbotron jumbotron-extend">
+    <div class="container-fluid jumbotron-container">
+      <h1 class="site-name">Welcome to the 「旅とも」</h1>
+      <h2 class="site-description">「旅とも」は旅のしおりを共有できるサービスです。</h2>
+      <%= link_to 'Sign Up', signup_path, class: 'btn btn-black' %>
+      <%= link_to 'Log In', login_path, class: 'btn btn-black' %>
     </div>
   </div>
-  <div class="row">
-     <aside class="col-sm-4">
-     <p><%= link_to 'みんなのしおり', root_path %></p>
-     <p><%= link_to 'ユーザ登録', signup_path %></p>
-     <p><%= link_to 'ログイン', login_path %></p>
-     </aside>
-   <div class="col-sm-8">
-     <%= render 'itineraries/itineraries', itineraries: @itineraries %>
-   </div>
+  <div class="container">
+    <div class="row">
+      <%= render 'layouts/sidebar' %>
+      <div class="col-sm-10">
+        <%= render 'itineraries/itineraries', itineraries: @itineraries %>
+      </div>
+    </div>
+  </div>
 <% end %>

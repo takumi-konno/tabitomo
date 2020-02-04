@@ -15,17 +15,17 @@
 
       <div class="form-group">
         <%= f.label :title, 'タイトル' %>
-        <%= f.text_field :title, class: 'form-control' %>
+        <%= f.text_field :title, class: 'form-control', :placeholder => "タイトル" %>
       </div>
 
       <div class="form-group">
         <%= f.label :start_date, '開始日' %>
-        <%= f.text_field :start_date, class: 'form-control' %>
+        <%= f.text_field :start_date, class: 'form-control', :placeholder => "2000-1-1" %>
       </div>
 
       <div class="form-group">
         <%= f.label :end_date, '終了日' %>
-        <%= f.text_field :end_date, class: 'form-control' %>
+        <%= f.text_field :end_date, class: 'form-control', :placeholder => "2099-12-31" %>
       </div>
 
       <%= f.submit '作成する', class: 'btn btn-primary btn-block' %>

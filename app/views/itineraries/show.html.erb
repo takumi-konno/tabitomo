@@ -4,31 +4,16 @@
   <% #自分の作成したしおりの場合 %>
   
     <div class="row">
-      <aside class="col-sm-4">
-        <div class="card">
-          <div class="card-header">
-            <h5 class="card-title"><%= @itinerary.title %></h5>
-          </div>
-          <div class="card-body">
-            <% if @itinerary.image? %>
-              <%= image_tag @itinerary.image.thumb300.url %>
-            <% else %>
-              <%= image_tag "" %>
-            <% end %>
-            <p><%= link_to @itinerary.user.name, user_path(id: @itinerary.user_id) %></p>
-            <%= @itinerary.start_date %>～<%= @itinerary.end_date %>
-          </div>
-        </div>
-        <div>
-          <%= link_to '編集する', edit_itinerary_path, class:'btn btn-primary btn-block' %>
-          <%= link_to '削除する', @itinerary, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class:'btn btn-primary btn-block' %>
+      <aside class="col-sm-3">
+        <%= render 'itineraries/itinerary', itinerary: @itinerary %>
+        <div class="text-center">
+          <%= link_to '編集する', edit_itinerary_path, class:'btn btn-primary' %>
+          <%= link_to '削除する', @itinerary, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class:'btn btn-primary' %>
           <%= render 'bookmarks/bookmark_button', itinerary: @itinerary %>
         </div>
       </aside>
-      <div class="col-sm-8">
-        <%= @itinerary.start_date %>～<%= @itinerary.end_date %>
-        
-        <% #Schedulesのrender %>
+      <div class="col-sm-9">
+        <h4 class="itinerary-date"><%= @itinerary.start_date %>～<%= @itinerary.end_date %></h4>
         <%= render 'schedules/schedules', schedules: @itinerary.schedules %>
         <%= link_to 'スケジュールを追加', new_schedule_path(itinerary_id: @itinerary.id), class:'btn btn-primary btn-block' %>
       </div>
@@ -38,51 +23,30 @@
   <% #他ユーザの作成したしおりの場合 %>
   
     <div class="row">
-      <aside class="col-sm-4">
-        <div class="card">
-          <div class="card-header">
-            <h5 class="card-title"><%= @itinerary.title %></h5>
-          </div>
-          <div class="card-body">
-            <img class="rounded img-fluid" src="" alt="">
-            <p><%= link_to @itinerary.user.name, user_path(id: @itinerary.user_id) %></p>
-            <%= @itinerary.start_date %>～<%= @itinerary.end_date %>
-          </div>
-          <div>
-            <%= render 'bookmarks/bookmark_button', itinerary: @itinerary %>
-          </div>
+      <aside class="col-sm-3">
+        <%= render 'itineraries/itinerary', itinerary: @itinerary %>
+        <div>
+          <%= render 'bookmarks/bookmark_button', itinerary: @itinerary %>
         </div>
       </aside>
-      <div class="col-sm-8">
-        <%= @itinerary.start_date %>～<%= @itinerary.end_date %>
-        
-        <% #Schedulesのrender %>
-        
+      <div class="col-sm-9">
+        <h4 class="itinerary-date"><%= @itinerary.start_date %>～<%= @itinerary.end_date %></h4>
         <%= render 'schedules/schedules', schedules: @itinerary.schedules %>
+      </div>
   <% end %>
 <% else %>
 
 <% #ログインしていない場合 %>
 
   <div class="row">
-        <aside class="col-sm-4">
-          <div class="card">
-            <div class="card-header">
-              <h5 class="card-title"><%= @itinerary.title %></h5>
-            </div>
-            <div class="card-body">
-              <img class="rounded img-fluid" src="" alt="">
-              <p><%= link_to @itinerary.user.name, user_path(id: @itinerary.user_id) %></p>
-              <%= @itinerary.start_date %>～<%= @itinerary.end_date %>
-            </div>
-          </div>
-        </aside>
-        <div class="col-sm-8">
-          <%= @itinerary.start_date %>～<%= @itinerary.end_date %>
-          <% #Schedulesのrender %>
-          <%= render 'schedules/schedules', schedules: @itinerary.schedules %>
-        </div>
-      </div>
+    <aside class="col-sm-3">
+      <%= render 'itineraries/itinerary', itinerary: @itinerary %>
+    </aside>
+    <div class="col-sm-9">
+      <h4 class="itinerary-date"><%= @itinerary.start_date %>～<%= @itinerary.end_date %></h4>
+      <%= render 'schedules/schedules', schedules: @itinerary.schedules %>
+    </div>
+  </div>
 <% end %>
 
 

@@ -4,24 +4,8 @@
   <% #自分のユーザページ %>
   
     <div class="row">
-      <aside class="col-sm-4">
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title"><%= @user.name %></h3>
-          </div>
-          <div class="card-body">
-            <% if @user.icon? %>
-              <%= image_tag @user.icon.thumb300.url %>
-            <% else %>
-              <%= image_tag "" %>
-            <% end %>
-          </div>
-        </div>
-        <div>
-          <%= link_to 'しおり作成', new_itinerary_path, class:'btn btn-primary btn-block' %>
-        </div>
-      </aside>
-      <div class="col-sm-8">
+      <%= render 'users/user_icon', user: @user %>
+      <div class="col-sm-10">
         <ul class="nav nav-tabs nav-justified mb-3">
           <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">自分のしおり  <span class="badge badge-secondary"><%= @count_itineraries %></span></a></li>
           <li class="nav-item"><a href="<%= likes_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>">ブックマーク  <span class="badge badge-secondary"><%= @count_likes %></span></a></li>
@@ -36,21 +20,8 @@
   <% #他人のユーザページ %>
 
     <div class="row">
-      <aside class="col-sm-4">
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title"><%= @user.name %></h3>
-          </div>
-          <div class="card-body">
-            <% if @user.icon? %>
-              <%= image_tag @user.icon.thumb300.url %>
-            <% else %>
-              <%= image_tag "" %>
-            <% end %>
-          </div>
-        </div>
-      </aside>
-      <div class="col-sm-8">
+      <%= render 'users/user_icon', user: @user %>
+      <div class="col-sm-10">
         <ul class="nav nav-tabs nav-justified mb-3">
           <li class="nav-item">作成したしおり  <span class="badge badge-secondary"><%= @count_itineraries %></span></li>
         </ul>
@@ -64,21 +35,8 @@
 <% #ログインしていない場合 %>
 
   <div class="row">
-    <aside class="col-sm-4">
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title"><%= @user.name %></h3>
-        </div>
-        <div class="card-body">
-            <% if @user.icon? %>
-              <%= image_tag @user.icon.thumb300.url %>
-            <% else %>
-              <%= image_tag "" %>
-            <% end %>
-        </div>
-      </div>
-    </aside>
-    <div class="col-sm-8">
+    <%= render 'users/user_icon', user: @user %>
+    <div class="col-sm-10">
       <ul class="nav nav-tabs nav-justified mb-3">
         <li class="nav-item">作成したしおり  <span class="badge badge-secondary"><%= @count_itineraries %></span></li>
       </ul>

@@ -44,6 +44,7 @@ class ItinerariesController < ApplicationController
   
   def search
     @itineraries = Itinerary.search(params[:search]).page(params[:page]).per(9)
+    render :layout => "second_layout"
   end
 
   

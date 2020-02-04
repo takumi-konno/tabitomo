@@ -1,15 +1,21 @@
 <ul class="list-unstyled">
   <% schedules.each do |schedule| %>
     <li>
-      <div class="card">
-        <div class="card-header">
-          <%= link_to schedule.title, schedule %>
+      <div class="card mb-3">
+        <div class="card-header schedule-header">
+          <p class="schedule-title"><%= link_to schedule.title, schedule %></p>
+          <p class="schedule-date"><%= schedule.date %></p>
         </div>
-        <div class="card-body">
-          <p><%= schedule.date %></p>
-          <p><%= schedule.start_time %></p>
-          <p><%= schedule.end_time %></p>
-          <p><%= schedule.supplement %></p>
+        <div class="card-body p-2 schedule-body">
+          <div class="row">
+            <div class="col-sm-2 border-right border-secondary">
+              <p class="text-left"><%= schedule.start_time %></p>
+              <p class="text-center">~<%= schedule.end_time %></p>  
+            </div>
+            <div class="col-sm-10 d-flex align-items-center">
+              <p><%= schedule.supplement %></p>
+            </div>
+          </div>
         </div>
       </div>
     </li>

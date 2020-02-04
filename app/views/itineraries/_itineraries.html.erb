@@ -1,17 +1,21 @@
-<ul class="list-unstyled">
+<div class="row">
   <% itineraries.each do |itinerary| %>
-    <li>
-      <div class="card">
+    <div class="col-lg-4 col-md-6 mb-3 pr-1">
+      <div class="card" style="width: 18rem;">
         <div class="card-header">
-          <p><%= link_to itinerary.title, itinerary %></p>
+          <% if itinerary.image? %>
+            <%= link_to image_tag(itinerary.image.thumb250.url), itinerary, class: 'card-img-top' %>
+          <% else %>
+            <%= link_to image_tag("/images/no_image250.png"), itinerary, class: 'card-img-top' %>
+          <% end %>
         </div>
-        <div class="card-body">
-          <p><%= itinerary.image %></p>
-          <p><%= itinerary.start_date %></p>
-          <p><%= itinerary.end_date %></p>
+        <div class="card-body pb-0">
+          <p class="card-title"><%= link_to itinerary.title, itinerary %></p>
+          <p class="card-date"><%= itinerary.start_date %>~<%= itinerary.end_date %></p>
+          <p class="card-user"><%= link_to itinerary.user.name, user_path(id: itinerary.user_id) %></p>
         </div>
       </div>
-    </li>
+    </div>
   <% end %>
   <%= paginate @itineraries %>
-</ul>
+</div>
