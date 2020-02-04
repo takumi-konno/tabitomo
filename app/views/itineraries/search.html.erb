@@ -48,14 +48,7 @@
   
 <% else %>
   
-  <div class="jumbotron jumbotron-extend">
-    <div class="container-fluid jumbotron-container">
-      <h1 class="site-name">Welcome to the 「旅とも」</h1>
-      <h2 class="site-description">「旅とも」は旅のしおりを共有できるサービスです。</h2>
-      <%= link_to 'Sign Up', signup_path, class: 'btn btn-black' %>
-      <%= link_to 'Log In', login_path, class: 'btn btn-black' %>
-    </div>
-  </div>
+  <%= render 'layouts/navbar' %>
   <div class="container">
     <div class="row">
     <aside class="col-sm-2">

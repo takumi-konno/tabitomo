@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_29_091309) do
+ActiveRecord::Schema.define(version: 2020_02_04_164536) do
 
   create_table "bookmarks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2020_01_29_091309) do
     t.string "supplement"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
     t.index ["itinerary_id"], name: "index_schedules_on_itinerary_id"
   end
 

@@ -49,7 +49,7 @@ class SchedulesController < ApplicationController
   private
 
   def schedule_params
-    params.require(:schedule).permit(:itinerary_id, :date, :title, :start_time, :end_time, :supplement)
+    params.require(:schedule).permit(:itinerary_id, :date, :title, :start_time, :end_time, :supplement, :image)
   end
   
   def correct_user_schedule
