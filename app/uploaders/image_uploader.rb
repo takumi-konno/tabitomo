@@ -45,6 +45,14 @@ include CarrierWave::RMagick
   #   "something.jpg" if original_filename
   # end
   
+  if Rails.env.development?
+    storage :file
+  elsif Rails.env.test?
+    storage :file
+  else
+    storage :fog
+  end
+  
   def size_range
     1..5.megabytes
   end
