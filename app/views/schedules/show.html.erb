@@ -8,7 +8,7 @@
     <% #自分の作成したしおりのスケジュールの場合 %>
     
     <div class="row">
-      <div class="col-sm-10 offset-sm-2">
+      <div class="col-lg-10 offset-lg-2">
         <%= render 'schedules/schedule', schedule: @schedule %>
         <%= link_to '編集する', edit_schedule_path, class:'btn btn-primary text' %>
         <%= link_to '削除する', @schedule, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class:'btn btn-primary' %>
@@ -20,7 +20,7 @@
     <% #他ユーザの作成したしおりのスケジュールの場合 %>
     
     <div class="row">
-      <div class="col-sm-10 offset-sm-2">
+      <div class="col-lg-10 offset-lg-2">
         <%= render 'schedules/schedule', schedule: @schedule %>
       </div>
     </div>
@@ -31,7 +31,7 @@
 <% #ログインしていない場合 %>
 
   <div class="row">
-    <div class="col-sm-10 offset-sm-2">
+    <div class="col-lg-10 offset-lg-2">
       <%= render 'schedules/schedule', schedule: @schedule %>
     </div>
   </div>

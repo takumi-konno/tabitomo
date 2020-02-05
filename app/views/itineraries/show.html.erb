@@ -4,17 +4,17 @@
   <% #自分の作成したしおりの場合 %>
   
     <div class="row">
-      <aside class="col-sm-3">
+      <aside class="col-sm-4 col-lg-3">
         <%= render 'itineraries/itinerary', itinerary: @itinerary %>
-        <div class="text-center">
+        <div class="text-center pb-4">
           <%= link_to '編集する', edit_itinerary_path, class:'btn btn-primary' %>
           <%= link_to '削除する', @itinerary, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class:'btn btn-primary' %>
           <%= render 'bookmarks/bookmark_button', itinerary: @itinerary %>
         </div>
       </aside>
-      <div class="col-sm-9">
+      <div class="col-sm-8 col-lg-9">
         <h4 class="itinerary-date"><%= @itinerary.start_date %>～<%= @itinerary.end_date %></h4>
-        <%= render 'schedules/schedules', schedules: @itinerary.schedules %>
+        <%= render 'schedules/schedules', schedules: @itinerary.schedules.order(:date, :start_time) %>
         <%= link_to 'スケジュールを追加', new_schedule_path(itinerary_id: @itinerary.id), class:'btn btn-primary btn-block' %>
       </div>
     </div>
@@ -23,15 +23,15 @@
   <% #他ユーザの作成したしおりの場合 %>
   
     <div class="row">
-      <aside class="col-sm-3">
+      <aside class="col-sm-4 col-lg-3">
         <%= render 'itineraries/itinerary', itinerary: @itinerary %>
-        <div>
+        <div class="pb-4">
           <%= render 'bookmarks/bookmark_button', itinerary: @itinerary %>
         </div>
       </aside>
-      <div class="col-sm-9">
+      <div class="col-sm-8 col-lg-9">
         <h4 class="itinerary-date"><%= @itinerary.start_date %>～<%= @itinerary.end_date %></h4>
-        <%= render 'schedules/schedules', schedules: @itinerary.schedules %>
+        <%= render 'schedules/schedules', schedules: @itinerary.schedules.order(:date, :start_time) %>
       </div>
     </div>
   <% end %>
@@ -40,12 +40,12 @@
 <% #ログインしていない場合 %>
 
   <div class="row">
-    <aside class="col-sm-3">
+    <aside class="col-sm-4 col-lg-3 pb-4">
       <%= render 'itineraries/itinerary', itinerary: @itinerary %>
     </aside>
-    <div class="col-sm-9">
+    <div class="col-sm-8 col-lg-9">
       <h4 class="itinerary-date"><%= @itinerary.start_date %>～<%= @itinerary.end_date %></h4>
-      <%= render 'schedules/schedules', schedules: @itinerary.schedules %>
+      <%= render 'schedules/schedules', schedules: @itinerary.schedules.order(:date, :start_time) %>
     </div>
   </div>
 <% end %>

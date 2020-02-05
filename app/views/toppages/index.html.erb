@@ -2,7 +2,7 @@
 <%= render 'layouts/flash_messages' %>
 <header class="mb-4">
   <nav class="navbar navbar-expand-sm navbar-dark" style="background-color:#004d61;">
-    <a class="navbar-brand" href="/">旅とも</a>
+    <a class="navbar-brand" href="/">旅とも <span class="fas fa-shoe-prints"></span></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -24,7 +24,7 @@
 <div class="container">
   <div class="row">
     <%= render 'layouts/sidebar' %>
-    <div class="col-sm-10">
+    <div class="col-sm-8 col-lg-10">
       <%= render 'itineraries/itineraries', itineraries: @itineraries %>
     </div>
   </div>
@@ -43,7 +43,7 @@
   <div class="container">
     <div class="row">
       <%= render 'layouts/sidebar' %>
-      <div class="col-sm-10">
+      <div class="col-sm-8 col-lg-10">
         <%= render 'itineraries/itineraries', itineraries: @itineraries %>
       </div>
     </div>
