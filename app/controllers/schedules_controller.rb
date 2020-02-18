@@ -2,10 +2,6 @@ class SchedulesController < ApplicationController
   before_action :require_user_logged_in, only: [:edit, :destroy]
   before_action :correct_user_schedule, only: [:edit, :destroy]
   
-  def show
-    @schedule = Schedule.find(params[:id])
-  end
-  
   def new
     @itinerary = Itinerary.find(params[:itinerary_id])
     @schedule = @itinerary.schedules.build

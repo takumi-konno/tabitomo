@@ -1,9 +1,78 @@
+<% if logged_in? %>
+  <% if correct_user_itinerary? %>
+    <% #自分の作成したしおりのスケジュールの場合 %>
+    <ul class="list-unstyled">
+      <% schedules.each do |schedule| %>
+        <li>
+          <div class="card mb-3">
+            <div class="card-header schedule-header">
+              <p class="schedule-title"><%= schedule.title%></p>
+              <p class="schedule-date">
+                <span><%= link_to '編集する', edit_schedule_path(schedule.id), class:'btn btn-sm btn-primary text btn-schedule' %></span>
+                <span><%= link_to '削除する', schedule_path(schedule.id), method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class:'btn btn-sm btn-primary btn-schedule' %></span>
+                <span class="schedule-date-main"><%= schedule.date %></span>
+              </p>
+            </div>
+            <div class="card-body p-2 schedule-body">
+              <div class="row">
+                <div class="col-sm-2 border-right border-secondary d-flex align-items-center">
+                  <p class="text-left"><%= schedule.start_time %></p>
+                  <p class="text-center">~<%= schedule.end_time %></p>  
+                </div>
+                <div class="col-sm-10 d-flex align-items-center">
+                  <p class="schedule-supplement"><%= schedule.supplement %></p>
+                  <p class="schedule-image">
+                    <% if schedule.image? %>
+                      <%= link_to image_tag(schedule.image.thumb250.url), schedule %>
+                    <% end %>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <% #他ユーザの作成したしおりのスケジュールの場合 %>
+    <ul class="list-unstyled">
+      <% schedules.each do |schedule| %>
+        <li>
+          <div class="card mb-3">
+            <div class="card-header schedule-header">
+              <p class="schedule-title"><%= schedule.title%></p>
+              <p class="schedule-date"><%= schedule.date %></p>
+            </div>
+            <div class="card-body p-2 schedule-body">
+              <div class="row">
+                <div class="col-sm-2 border-right border-secondary d-flex align-items-center">
+                  <p class="text-left"><%= schedule.start_time %></p>
+                  <p class="text-center">~<%= schedule.end_time %></p>  
+                </div>
+                <div class="col-sm-10 d-flex align-items-center">
+                  <p class="schedule-supplement"><%= schedule.supplement %></p>
+                  <p class="schedule-image">
+                    <% if schedule.image? %>
+                      <%= link_to image_tag(schedule.image.thumb250.url), schedule %>
+                    <% end %>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+<% else %>
+
+<% #ログインしていない場合 %>
 <ul class="list-unstyled">
   <% schedules.each do |schedule| %>
     <li>
       <div class="card mb-3">
         <div class="card-header schedule-header">
-          <p class="schedule-title"><%= link_to schedule.title, schedule %></p>
+          <p class="schedule-title"><%= schedule.title%></p>
           <p class="schedule-date"><%= schedule.date %></p>
         </div>
         <div class="card-body p-2 schedule-body">
@@ -26,3 +95,5 @@
     </li>
   <% end %>
 </ul>
+
+<% end %>

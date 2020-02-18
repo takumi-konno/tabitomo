@@ -9,17 +9,21 @@
 .schedule-header p {
     margin: 0;
 }
-.schedule-title a {
+.schedule-title {
     color: #004d61;
     font-weight: bold;
     font-size: 16px;
-}
-.schedule-title {
     float: left;
+}
+.btn-schedule {
+    margin: 0;
 }
 .schedule-date {
     float: right;
     font-size: 14px;
+}
+.schedule-date-main {
+    margin-left: 10px;
 }
 .schedule-body p {
     margin-bottom: 0;
