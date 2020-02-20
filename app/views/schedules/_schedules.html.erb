@@ -20,7 +20,7 @@
                   <p class="text-center">~<%= schedule.end_time %></p>  
                 </div>
                 <div class="col-sm-10 d-flex align-items-center">
-                  <p class="schedule-supplement"><%= schedule.supplement %></p>
+                  <p class="schedule-supplement"><%= simple_format(schedule.supplement) %></p>
                   <p class="schedule-image">
                     <% if schedule.image? %>
                       <%= link_to image_tag(schedule.image.thumb250.url), schedule %>
@@ -50,7 +50,7 @@
                   <p class="text-center">~<%= schedule.end_time %></p>  
                 </div>
                 <div class="col-sm-10 d-flex align-items-center">
-                  <p class="schedule-supplement"><%= schedule.supplement %></p>
+                  <p class="schedule-supplement"><%= simple_format(schedule.supplement) %></p>
                   <p class="schedule-image">
                     <% if schedule.image? %>
                       <%= link_to image_tag(schedule.image.thumb250.url), schedule %>
@@ -82,7 +82,7 @@
               <p class="text-center">~<%= schedule.end_time %></p>  
             </div>
             <div class="col-sm-10 d-flex align-items-center">
-              <p class="schedule-supplement"><%= schedule.supplement %></p>
+              <p class="schedule-supplement"><%= simple_format(schedule.supplement) %></p>
               <p class="schedule-image">
                 <% if schedule.image? %>
                   <%= link_to image_tag(schedule.image.thumb250.url), schedule %>

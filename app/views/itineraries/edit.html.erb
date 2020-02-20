@@ -20,12 +20,12 @@
 
       <div class="form-group">
         <%= f.label :start_date, '開始日' %>
-        <%= f.text_field :start_date, class: 'form-control' %>
+        <%= f.date_field :start_date, class: 'form-control' %>
       </div>
 
       <div class="form-group">
         <%= f.label :end_date, '終了日' %>
-        <%= f.text_field :end_date, class: 'form-control' %>
+        <%= f.date_field :end_date, class: 'form-control' %>
       </div>
 
       <%= f.submit '保存する', class: 'btn btn-primary btn-block' %>
