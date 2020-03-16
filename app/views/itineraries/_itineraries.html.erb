@@ -1,7 +1,7 @@
 <div class="row">
   <% itineraries.each do |itinerary| %>
     <div class="col-xl-4 col-lg-6 col-md-12 mb-3 pr-1">
-      <div class="card" style="width: 18rem;">
+      <div class="card mx-auto" style="width: 18rem;">
         <div class="card-header">
           <% if itinerary.image? %>
             <%= link_to image_tag(itinerary.image.thumb250.url), itinerary, class: 'card-img-top' %>

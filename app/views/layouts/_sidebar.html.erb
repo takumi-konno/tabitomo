@@ -1,6 +1,6 @@
 <% if logged_in? %>
-  <aside class="col-sm-4 col-lg-2">
-    <div class="nav nav-pills nav-stacked text-center">
+  <aside class="col-sm-4 col-md-3 col-lg-3 col-xl-2">
+    <div class="nav nav-pills nav-stacked text-center mx-auto">
       <p class="nav-link active"><span class="fas fa-clipboard-list"></span> <%= link_to 'しおり一覧', root_path %></p>
       <p class="nav-link"><span class="fas fa-search"></span> <%= link_to 'しおりを検索', search_path %></p>
       <p class="nav-link"><span class="fas fa-user"></span> <%= link_to '自分のしおり', user_path(current_user) %></p>
@@ -10,7 +10,7 @@
     </div>
   </aside>
 <% else %>
-  <aside class="col-sm-4 col-lg-2">
+  <aside class="col-sm-4 col-md-3 col-lg-3 col-xl-2">
     <div class="nav nav-pills nav-stacked text-center sidebar">
       <p class="nav-link active active-nav"><span class="fas fa-clipboard-list"></span> <%= link_to 'しおり一覧', root_path %></p>
       <p class="nav-link"><span class="fas fa-search"></span> <%= link_to 'しおりを検索', search_path %></p>
